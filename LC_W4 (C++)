@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        bool isFound = false;
+        int index = 0;
+
+//  return the index if the target is found.
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums.at(i) == target) {
+                return i;
+            }
+        }
+
+//  If the target is smaller than the array's first element.
+        if (target < nums.at(0)) {
+            return 0;
+        }
+
+//  If not, return the index where it would be if it were inserted in order.
+        if (!isFound) {
+            for (int i = 0; i < nums.size() - 1; i++) {
+                if (target > nums.at(i) && target < nums.at(i + 1)) {
+                    return i + 1;
+                }
+            }
+        }
+
+//  If target is the largest.
+        return nums.size();
+    }
+};
