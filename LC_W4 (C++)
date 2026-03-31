@@ -1,9 +1,7 @@
 class Solution {
 public:
     int searchInsert(vector<int>& nums, int target) {
-        bool isFound = false;
-        int index = 0;
-
+       
 //  return the index if the target is found.
         for (int i = 0; i < nums.size(); i++) {
             if (nums.at(i) == target) {
@@ -17,13 +15,13 @@ public:
         }
 
 //  If not, return the index where it would be if it were inserted in order.
-        if (!isFound) {
-            for (int i = 0; i < nums.size() - 1; i++) {
-                if (target > nums.at(i) && target < nums.at(i + 1)) {
-                    return i + 1;
-                }
+    
+        for (int i = 0; i < nums.size() - 1; i++) {
+            if (target > nums.at(i) && target < nums.at(i + 1)) {
+                return i + 1;
             }
         }
+    
 
 //  If target is the largest.
         return nums.size();
